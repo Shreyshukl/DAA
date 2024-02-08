@@ -1,0 +1,45 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+vector<vector<int>>PairSum(vector<int>s,int sum,int n,int &size)
+{
+    vector<vector<int>>answer;
+    for(int i=0;i<n;i++)
+    {
+        for(int j=i+1;j<n;j++)
+        {
+            vector<int>v;
+            if(s[i]+s[j]==sum)
+            {
+                v.push_back(s[i]);
+                v.push_back(s[j]);
+                answer.push_back(v);
+                (size)++;
+                cout<<(size)<<"   ";
+            }
+        }
+    }
+    cout<<endl;
+    return answer;
+}
+int main()
+{
+  int value,n,s;
+  int size=0;
+  vector<int>myVector;
+  cout<<"enter limit"<<endl;
+  cin>>n;
+  for(int i=0;i<n;i++)
+  {
+      cin>>value;
+      myVector.push_back(value);
+  }
+  cout<<"enter the sum you are looling for"<<endl;
+  cin>>s;
+  vector<vector<int>>pair=PairSum(myVector,n,s,size);
+   for(int i=0;i<size;i++)
+  {
+      cout<<pair[i][0]<<","<<pair[i][1]<<" "<<endl;
+  }
+  return 0;
+}
